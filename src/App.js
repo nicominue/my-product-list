@@ -1,21 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
 import { HeaderApp } from './components/HeaderApp';
-import { ListProducts } from './components/Products/ListProducts';
-import { AlertProduct } from './components/Products/AlertProduct';
+import { Home } from './views/Home';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { ProductView } from './views/ProductView';
+import { PurchaseView } from './views/PurchaseView';
+
 
 const App = () => {
   return (
     <>
       <HeaderApp />
-      <Container>
-        <div className="App">
-          <AlertProduct />
-          <ListProducts />
-        </div>
-      </Container >
+      <Switch>
+        <Route path={"/"} exact component={Home} />
+        <Route path={"/product/:id"} exact component={ProductView} />
+        <Route path={"/purchase"} exact component={PurchaseView} />
+        <Route render={() => <Redirect to={"/"} /> } />
+      </Switch>
     </>
   );
 };
