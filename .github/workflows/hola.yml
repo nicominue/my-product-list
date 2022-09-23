@@ -1,0 +1,17 @@
+name: Hola a todos
+
+on:
+  push:
+    branches:
+      - main
+      - actions
+
+jobs:
+  hola_a_todos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo the message
+        run: |
+          echo "Hola chicos!"
+      - name: ¿Qué día es hoy?
+        run: date
