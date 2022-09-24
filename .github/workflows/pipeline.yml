@@ -9,13 +9,39 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [17.x]
+     
     steps:
-      - uses: actions/checkout@v3
-        with: 
-         fetch-depth: 0
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: checkout repository
+        uses: actions/checkout@v3
+    
+      - name: Configuration of Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-         node-version: 16
-      - run: npm ci
-      - run: npm test 
+         node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run : npm install
+
+      - name: Run the tests  
+        run: npm test 
+
+      - name: Builds
+        run: npm run build
+
+      - name: Deploy
+        run: |
+            git config --global user.name $nicominue
+            git config --global user.email $nicominue@gmail.com
+            git remote set-url origin https://${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}@github.com/${my-product-list}
+            npm run deploy
+        env:
+         user_name: 'github-actions[bot]'
+         user_email: 'github-actions[bot]@users.noreply.github.com'
+         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+         repository: ${{ github.repository }}
+            
+
