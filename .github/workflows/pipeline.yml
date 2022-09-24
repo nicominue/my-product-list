@@ -32,12 +32,12 @@ jobs:
       - name: Builds
         run: npm run build
 
-      - name: Deploy
-        run: |
-            git config --global user.name $nicominue
-            git config --global user.email $nicominue@gmail.com
-            git remote set-url origin https://${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}@github.com/${my-product-list}
-            npm run deploy
+      # - name: Deploy
+      #   run: |
+      #       git config --global user.name $nicominue
+      #       git config --global user.email $nicominue@gmail.com
+      #       git remote set-url origin https://${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}@github.com/${my-product-list}
+      #       npm run deploy
         # env:
         #  user_name: 'github-actions[bot]'
         #  user_email: 'github-actions[bot]@users.noreply.github.com'
