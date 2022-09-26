@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://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@github.com/nicominue/my-product-list"
+    "deploy": "gh-pages -d build -r https://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@github.com/nicominue/my-product-list"
   },
   "eslintConfig": {
     "extends": [
