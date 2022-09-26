@@ -36,9 +36,13 @@ jobs:
         run: |
             git config --global user.name nicominue
             git config --global user.email nicominue@gmail.com
+            git remote set-url origin https://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@github.com/nicominue/my-product-list"
       - name: Deploy   
         run: npm run deploy   
-        env:
-         GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        # env:
+        #  user_name: 'github-actions[bot]'
+        #  user_email: 'github-actions[bot]@users.noreply.github.com'
+        #  GH_TOKEN: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        #  repository: ${{ github.repository }}
             
 
